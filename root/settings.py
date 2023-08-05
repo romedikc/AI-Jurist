@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     # Applications
     'apps.users',
+    'apps.chat',
 ]
 
 MIDDLEWARE = [
