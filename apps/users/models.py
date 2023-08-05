@@ -51,12 +51,20 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('expert', 'Эксперт'),
         ('admin', 'Администратор')
     ]
+    specialization_choices = [
+        ('ugolovnyi', 'Уголовный кодекс'),
+        ('semeinyi', 'Семейный кодекс'),
+        ('nalogovyi', 'Налоговый кодекс'),
+        ('grajdanskyi', 'Гражданский кодекс'),
+        ('trudovoyi', 'Трудовой кодекс'),
+        ('budjetnyi', 'Бюджетный кодекс')
+    ]
 
     username = models.CharField(max_length=255)
     phone = models.CharField(max_length=255, unique=True, null=True, blank=True)
     email = models.EmailField(unique=True)
     user_type = models.CharField(max_length=255, choices=user_type_choices)
-    specialization = models.CharField(max_length=255, null=True, blank=True)
+    specialization = models.CharField(max_length=255, choices=specialization_choices, null=True, blank=True)
     description = models.CharField(max_length=255, null=True, blank=True)
     contact = models.CharField(max_length=255, null=True, blank=True)
     USERNAME_FIELD = "email"

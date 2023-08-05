@@ -22,7 +22,7 @@ class UserView(ModelViewSet):
     queryset = User.objects.all()
 
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['user_type']
+    filterset_fields = ['user_type', 'specialization']
 
     def perform_create(self, serializer):
         serializer.save(user_type='client')

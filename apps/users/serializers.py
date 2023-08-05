@@ -19,7 +19,10 @@ class UserSerializer(serializers.ModelSerializer):
             "description",
             "contact",
         ]
-        read_only_fields = ['is_active']
+        read_only_fields = [
+            'is_active',
+            'user_type',
+        ]
         extra_kwargs = {
             "password": {"write_only": True},
         }
