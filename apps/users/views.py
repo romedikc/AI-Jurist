@@ -1,4 +1,5 @@
 from rest_framework.generics import CreateAPIView
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
@@ -12,8 +13,8 @@ from apps.users.serializers import (
 )
 
 
-class RegisterUserView(CreateAPIView):
-    """Register employee view"""
+class RegisterUserView(ModelViewSet):
+    """Register user view"""
 
     serializer_class = RegisterUserSerializer
     queryset = User.objects.all()

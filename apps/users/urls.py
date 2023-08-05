@@ -1,5 +1,7 @@
 from django.urls import path, include
 
+from rest_framework.routers import DefaultRouter
+
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from apps.users.views import (
@@ -9,8 +11,12 @@ from apps.users.views import (
 
 app_name = "users"
 
+router = DefaultRouter()
+router.register('users', RegisterUserView)
 
 urlpatterns = [
+    # viewsets
+    path('', include(router.urls)),
 
     # rest framework
     path("rest-login/", include("rest_framework.urls")),
@@ -20,8 +26,6 @@ urlpatterns = [
          TokenRefreshView.as_view(), name="token_refresh"),
 
     # app endpoints
-    path("registration-user/",
-         RegisterUserView.as_view(), name="create_user"),
     path("login-user/",
          LoginUserView.as_view(), name="login_user"),
 ]
