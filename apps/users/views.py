@@ -1,3 +1,5 @@
+from django_filters.rest_framework import DjangoFilterBackend
+
 from rest_framework.generics import CreateAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.exceptions import AuthenticationFailed
@@ -7,17 +9,23 @@ from rest_framework import status
 
 from apps.users.models import User
 from apps.users.serializers import (
-    RegisterUserSerializer,
+    UserSerializer,
     LoginUserSerializer,
 
 )
 
 
-class RegisterUserView(ModelViewSet):
+class UserView(ModelViewSet):
     """Register user view"""
 
-    serializer_class = RegisterUserSerializer
+    serializer_class = UserSerializer
     queryset = User.objects.all()
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['user_type']
+
+    def perform_create(self, serializer):
+        serializer.save(user_type='client')
 
 
 class LoginUserView(CreateAPIView):

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from apps.users.models import User
 
 
-class RegisterUserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     """User registration serializer"""
 
     class Meta:

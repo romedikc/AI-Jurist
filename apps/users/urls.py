@@ -5,14 +5,14 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from apps.users.views import (
-    RegisterUserView,
+    UserView,
     LoginUserView,
 )
 
 app_name = "users"
 
 router = DefaultRouter()
-router.register('users', RegisterUserView)
+router.register('users', UserView)
 
 urlpatterns = [
     # viewsets
