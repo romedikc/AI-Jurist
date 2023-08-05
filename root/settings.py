@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 import dj_database_url
+from django.conf import settings
 from dotenv import load_dotenv
 from pathlib import Path
 from datetime import timedelta
@@ -172,7 +173,7 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": False,
 
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": os.getenv(SECRET_KEY),
+    "SIGNING_KEY": os.getenv('SECRET_KEY'),
     "VERIFYING_KEY": "",
     "AUDIENCE": None,
     "ISSUER": None,
