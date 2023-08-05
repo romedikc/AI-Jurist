@@ -11,3 +11,6 @@ gunicorn
 django-filter
 openai
 langchain
+chroma
+tiktoken
+chromadb
