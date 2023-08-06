@@ -67,6 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     specialization = models.CharField(max_length=255, choices=specialization_choices, null=True, blank=True)
     description = models.CharField(max_length=255, null=True, blank=True)
     contact = models.CharField(max_length=255, null=True, blank=True)
+    is_staff = models.BooleanField(default=False)
     USERNAME_FIELD = "email"
 
     objects = UserManager()
